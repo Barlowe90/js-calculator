@@ -1,11 +1,10 @@
+import Boton from "./Boton.js";
+import { useState } from "react";
+
 function App() {
-  return (
-    <div className="container">
-      <div className="d-flex justify-content-center">
-        <h1>JavaScript Calculator</h1>
-      </div>
-    </div>
-  );
+  const [texto, setTexto] = useState("Calculadora JavaScript");
+
+  return <div className="container"></div>;
 }
 
 export default App;
