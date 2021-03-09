@@ -13,11 +13,7 @@ export default function Calculator() {
     <CalculatorStyles>
       <div className="display">
         <h1>JS Calculator - React hooks</h1>
-        <div id="display" className="text-center">
-          <h2>
-            <Display />
-          </h2>
-        </div>
+        <Display />
       </div>
       <div className="number-pad">
         <ClearButton />

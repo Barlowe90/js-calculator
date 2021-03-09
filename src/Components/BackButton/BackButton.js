@@ -1,3 +1,11 @@
+import { useContext } from "react";
+import { NumberContext } from "../NumberProvider/NumberProvider";
+
 export default function BackButton() {
-  return <button type="button"> &#8592;</button>;
+  const { handleBackButton } = useContext(NumberContext);
+  return (
+    <button type="button" onClick={() => handleBackButton()}>
+      &#8592;
+    </button>
+  );
 }
