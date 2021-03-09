@@ -81,8 +81,8 @@ const NumberProvider = (props) => {
           setNumberStored(
             `${
               Math.round(
-                `${(parseFloat(numberStored) / parseFloat(number)) * 1000}`
-              ) / 1000
+                `${(parseFloat(numberStored) / parseFloat(number)) * 10000}`
+              ) / 10000
             }`
           );
           break;
