@@ -5,6 +5,7 @@ export const NumberContext = React.createContext();
 const NumberProvider = (props) => {
   const [number, setNumber] = useState("0");
   const [numberStored, setNumberStored] = useState("");
+  const [functionType, setFunctionType] = useState("");
 
   const handleSetDisplayValue = (num) => {
     if (!number.includes(".") || num !== ".") {
@@ -29,14 +30,92 @@ const NumberProvider = (props) => {
     }
   };
 
+  const handleSetCalcFunction = (type) => {
+    if (number) {
+      setFunctionType(type);
+      handleStoredValue();
+    }
+    if (numberStored) {
+      setFunctionType(type);
+    }
+  };
+
+  const handleToggleNegative = () => {
+    if (number) {
+      if (number > 0) {
+        setNumber(`-${number}`);
+      } else {
+        const positiveNumber = number.slice(1);
+        setNumber(positiveNumber);
+      }
+    } else if (numberStored > 0) {
+      setNumberStored(`-${numberStored}`);
+    } else {
+      const positiveNumber = numberStored.slice(1);
+      setNumberStored(positiveNumber);
+    }
+  };
+
+  const doMath = () => {
+    if (number && numberStored) {
+      switch (functionType) {
+        case "+":
+          setNumberStored(
+            `${
+              Math.round(
+                `${(parseFloat(numberStored) + parseFloat(number)) * 100}`
+              ) / 100
+            }`
+          );
+          break;
+        case "-":
+          setNumberStored(
+            `${
+              Math.round(
+                `${(parseFloat(numberStored) - parseFloat(number)) * 1000}`
+              ) / 1000
+            }`
+          );
+          break;
+        case "/":
+          setNumberStored(
+            `${
+              Math.round(
+                `${(parseFloat(numberStored) / parseFloat(number)) * 1000}`
+              ) / 1000
+            }`
+          );
+          break;
+        case "*":
+          setNumberStored(
+            `${
+              Math.round(
+                `${parseFloat(numberStored) * parseFloat(number) * 1000}`
+              ) / 1000
+            }`
+          );
+          break;
+        default:
+          break;
+      }
+      setNumber("");
+    }
+  };
+
   return (
     <NumberContext.Provider
       value={{
+        functionType,
         handleSetDisplayValue,
         handleStoredValue,
         handleClearValue,
         handleBackButton,
+        handleSetCalcFunction,
+        handleToggleNegative,
+        doMath,
         number,
+        numberStored,
+        setNumber,
       }}
     >
       {props.children}
