@@ -12,9 +12,11 @@ export default function Calculator() {
   return (
     <CalculatorStyles>
       <div className="display">
-        <h1>Calculator</h1>
-        <div id="display">
-          <Display />
+        <h1>JS Calculator - React hooks</h1>
+        <div id="display" className="text-center">
+          <h2>
+            <Display />
+          </h2>
         </div>
       </div>
       <div className="number-pad">

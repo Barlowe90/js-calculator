@@ -65,7 +65,7 @@ export const DisplayStyles = styled.div`
     color: white;
   }
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
     text-align: right;
     padding: 0px;
