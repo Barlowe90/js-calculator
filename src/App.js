@@ -1,10 +1,7 @@
-import Boton from "./Boton.js";
-import { useState } from "react";
+import { Calculator } from "./Components";
 
 function App() {
-  const [texto, setTexto] = useState("Calculadora JavaScript");
-
-  return <div className="container"></div>;
+  return <Calculator />;
 }
 
 export default App;
